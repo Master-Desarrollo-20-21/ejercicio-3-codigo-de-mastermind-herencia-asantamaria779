@@ -14,7 +14,7 @@ class Game {
 		this.results = new Result[10];
 	}
 	
-	private void showStateOfRound() {
+	private void showStateOfGame() {
 		new Console().out("\n"+numberOfAttemps+" attempt(s):\n");
 		secretCombination.show();
 		for(int i=0;i<this.numberOfAttemps;i++) {		
@@ -36,14 +36,14 @@ class Game {
 		
 		boolean isWinner=false;
 		do {
-			this.showStateOfRound();
+			this.showStateOfGame();
 			ProposedCombination proposedCombination=new ProposedCombination();
 			Result result=this.calculateResult(proposedCombination);
 			isWinner=this.isWinner(result);
 			results[numberOfAttemps]=result;
 			this.numberOfAttemps++;
 		} while (!(this.numberOfAttemps==MAX_ATTEMPS || isWinner));
-		this.showStateOfRound();
+		this.showStateOfGame();
 		if (isWinner) {
 			new Console().out("You've won!!! ;-)\n");
 		}

@@ -1,0 +1,101 @@
+@startuml
+class Mastermind {
+	-void play()
+	-boolean resume()
+	+{static}void main(String[] args)
+}
+
+class Game {
+	~int MAX_ATTEMPS
+	~int numberOfAttemps
+	~Game()
+	-void showStateOfRound()
+	-Result calculateResult(ProposedCombination proposedCombination)
+	-boolean isWinner(Result result)
+	+void play()
+}
+
+class SecretCombination {
+	~SecretCombination()
+	-{static}String makeRandom()
+	+int numberCoincidencesInColourAndPosition(ProposedCombination proposedCombination)
+	+int numberCoincidencesInColourOnly(ProposedCombination proposedCombination)
+	+void show()
+}
+
+class Result {
+	~int numberOfBlacks
+	~int numberOfWhites
+	~Result(ProposedCombination proposedCombination, int numberOfBlacks, int numberOfWhites)
+	+void show()
+}
+
+class Console {
+	-{static}BufferedReader b
+	+String inString()
+	+int inInt()
+	+float inFloat()
+	+double inDouble()
+	+long inLong()
+	+byte inByte()
+	+short inShort()
+	+char inChar()
+	+boolean inBoolean()
+	+void out(String salida)
+	+void out(int salida)
+	+void out(float salida)
+	+void out(double salida)
+	+void out(long salida)
+	+void out(byte salida)
+	+void out(Short salida)
+	+void out(char salida)
+	+void out(boolean salida)
+	+String readString(String mensaje)
+	-void salir()
+	+{static}void main(String[] args)
+}
+
+class ProposedCombination {
+	~ProposedCombination()
+	-{static}String proposeCombination()
+	+void show()
+}
+
+abstract class Combination {
+	#{static}int LENGHT
+	#String colours
+	~Combination(String colours)
+	#{static}boolean isValidLength(String combination)
+	#{static}boolean areValidColours(String combination)
+	#{static}String validColours()
+	#{static}int length()
+	#{abstract}void show()
+}
+
+enum Colour {
+	RED
+	BLUE
+	YELLOW
+	GREEN
+	ORANGE
+	PINK
+	colour
+	~Colour(char colour)
+	+{static}boolean isValid(char colour)
+	+{static}String validColours()
+}
+
+Mastermind -down.> Game
+Game *-down-> SecretCombination
+Game *-down-> "0..10" Result
+Result -down-> ProposedCombination
+Combination <|-down- SecretCombination
+Combination <|-down- ProposedCombination
+Combination -down-> Colour
+SecretCombination -down-> Colour
+Game ..> Console
+Mastermind ..> Console
+ProposedCombination .down.> Console
+SecretCombination .down.> Console
+Result .down.> Console
+@enduml

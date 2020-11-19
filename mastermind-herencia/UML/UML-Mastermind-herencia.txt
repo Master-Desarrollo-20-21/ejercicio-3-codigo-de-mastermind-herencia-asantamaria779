@@ -8,10 +8,11 @@ class Mastermind {
 class Game {
 	~int MAX_ATTEMPS
 	~int numberOfAttemps
+	~SecretCombination secretCombination
+	~Result[] results
 	~Game()
-	-void showStateOfRound()
+	-void showStateOfGame()
 	-Result calculateResult(ProposedCombination proposedCombination)
-	-boolean isWinner(Result result)
 	+void play()
 }
 
@@ -24,9 +25,11 @@ class SecretCombination {
 }
 
 class Result {
+	~ProposedCombination proposedCombination
 	~int numberOfBlacks
 	~int numberOfWhites
 	~Result(ProposedCombination proposedCombination, int numberOfBlacks, int numberOfWhites)
+	+boolean isWinner()
 	+void show()
 }
 
@@ -96,6 +99,8 @@ SecretCombination -down-> Colour
 Game ..> Console
 Mastermind ..> Console
 ProposedCombination .down.> Console
-SecretCombination .down.> Console
+SecretCombination .down..> Console
 Result .down.> Console
+Result -[hidden]right-> Combination
+SecretCombination -[hidden]right-> ProposedCombination
 @enduml

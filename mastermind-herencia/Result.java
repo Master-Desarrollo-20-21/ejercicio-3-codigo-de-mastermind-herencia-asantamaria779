@@ -11,6 +11,11 @@ class Result {
 		this.numberOfBlacks = numberOfBlacks;
 		this.numberOfWhites = numberOfWhites;
 	}
+	
+	public boolean isWinner() {
+		return this.numberOfBlacks==ProposedCombination.length();
+	}
+	
 	public void show() {
 		
 		this.proposedCombination.show();

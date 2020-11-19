@@ -27,10 +27,6 @@ class Game {
 		int numberOfWhites=secretCombination.numberCoincidencesInColourOnly(proposedCombination);
 		return new Result(proposedCombination,numberOfBlacks,numberOfWhites);
 	}
-
-	private boolean isWinner(Result result) {
-		return result.numberOfBlacks==ProposedCombination.length();
-	}
 	
 	public void play() {
 		
@@ -39,7 +35,7 @@ class Game {
 			this.showStateOfGame();
 			ProposedCombination proposedCombination=new ProposedCombination();
 			Result result=this.calculateResult(proposedCombination);
-			isWinner=this.isWinner(result);
+			isWinner=result.isWinner();
 			results[numberOfAttemps]=result;
 			this.numberOfAttemps++;
 		} while (!(this.numberOfAttemps==MAX_ATTEMPS || isWinner));

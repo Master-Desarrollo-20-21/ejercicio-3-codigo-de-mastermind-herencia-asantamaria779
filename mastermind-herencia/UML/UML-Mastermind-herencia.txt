@@ -12,7 +12,7 @@ class Game {
 	~Result[] results
 	~Game()
 	-void showStateOfGame()
-	-Result calculateResult(ProposedCombination proposedCombination)
+	-Result check(ProposedCombination proposedCombination)
 	+void play()
 }
 
@@ -35,27 +35,9 @@ class Result {
 
 class Console {
 	-{static}BufferedReader b
-	+String inString()
-	+int inInt()
-	+float inFloat()
-	+double inDouble()
-	+long inLong()
-	+byte inByte()
-	+short inShort()
-	+char inChar()
-	+boolean inBoolean()
 	+void out(String salida)
-	+void out(int salida)
-	+void out(float salida)
-	+void out(double salida)
-	+void out(long salida)
-	+void out(byte salida)
-	+void out(Short salida)
-	+void out(char salida)
-	+void out(boolean salida)
 	+String readString(String mensaje)
-	-void salir()
-	+{static}void main(String[] args)
+	-void exit()
 }
 
 class ProposedCombination {
@@ -88,7 +70,7 @@ enum Colour {
 	+{static}String validColours()
 }
 
-Mastermind -down.> Game
+Mastermind *-down-> Game
 Game *-down-> SecretCombination
 Game *-down-> "0..10" Result
 Result -down-> ProposedCombination

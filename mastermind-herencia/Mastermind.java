@@ -1,8 +1,8 @@
 package mastermind;
 
-class Mastermind {
-
-	 private void play() {
+class Mastermind {	
+	
+	private void play() {
 		 do {
 			 new Console().out("\n---- MASTERMIND -----\n");
 			 new Game().play();

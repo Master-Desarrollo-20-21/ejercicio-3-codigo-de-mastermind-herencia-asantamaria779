@@ -22,7 +22,7 @@ class Game {
 		}
 	}
 	
-	private Result calculateResult(ProposedCombination proposedCombination) {
+	private Result check(ProposedCombination proposedCombination) {
 		int numberOfBlacks=secretCombination.numberCoincidencesInColourAndPosition(proposedCombination);
 		int numberOfWhites=secretCombination.numberCoincidencesInColourOnly(proposedCombination);
 		return new Result(proposedCombination,numberOfBlacks,numberOfWhites);
@@ -34,7 +34,7 @@ class Game {
 		do {
 			this.showStateOfGame();
 			ProposedCombination proposedCombination=new ProposedCombination();
-			Result result=this.calculateResult(proposedCombination);
+			Result result=this.check(proposedCombination);
 			isWinner=result.isWinner();
 			results[numberOfAttemps]=result;
 			this.numberOfAttemps++;

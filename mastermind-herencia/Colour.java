@@ -14,12 +14,10 @@ public enum Colour {
 		this.colour=colour;
 	}
 	
-	public static boolean isValid(char colour) {
-		
+	public static boolean isValid(char colour) {		
 		for (Colour c : Colour.values()) {
 			if (c.colour == colour) return true;
-		}
-		
+		}		
 		return false;
 	}
 	
@@ -28,9 +26,7 @@ public enum Colour {
 		for (Colour c : Colour.values()) {
 			validColours+=c.colour;
 		}
-		return validColours;
-		
+		return validColours;		
 	}
-
 }
 	   				
